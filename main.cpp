@@ -346,6 +346,134 @@ void makePuzzle(string target, string puzzle){
 	cout << endl << endl;
 }
 
+void mainGame(){
+	//-- HEADER --//
+	system("cls");
+	colorSet(4);
+		gamePart("line_small_left");
+	colorSet(15);
+		cout << "SUDOKU";
+	colorSet(4);
+		gamePart("line_small_right");
+	//// LEVEL AND COLLECT  PARTS ////
+	switch(level){
+		case 1:
+			colorSet(10);
+			cout << setw(24) << right << "EASY LEVEL" << endl;
+			break;
+		case 2:
+			colorSet(14);
+			cout << setw(25) << right << "MEDIUM LEVEL" << endl;
+			break;
+		case 3:
+			colorSet(12);
+			cout << setw(24) << right << "HARD LEVEL" << endl;
+			break;
+	}
+	//////////////////////////////////
+	colorSet(4);
+		gamePart("seperator");
+		cout << endl;
+	// -- HEADER -- //
+	
+	// -- TABLE GENERATOR -- //
+	
+	///////////////////////////
+	// SET COLOR TABLE //
+	int colorTable = 5;
+	/////////////////////
+	
+	//IF PLAYER QUITS
+	
+		//SET SUDOKY PUZZLE SIZE
+		sudokuPuzzleSize = (sizeof(sudokuPuzzle) / sizeof(sudokuPuzzle[0]));
+		//FETH SOLUTION
+		if(sudokuStatus == "quitted"){
+			for(int checker = 0; checker < sudokuPuzzleSize; ++checker){
+				sudokuPuzzle[checker] = sudokuSolution[checker];
+			}
+		}
+	
+	//BUILD SUDOKU TABLE
+	sudokuBuildNumber = 0;
+	for(int tpart = 1; tpart <= 182; ++tpart){
+		if(tpart == 1 || tpart == 62 || tpart == 1 || tpart == 182){
+			colorSet(colorTable);
+			gamePart("sudoku_outer_border");
+		}
+		else if(tpart ==   2 || tpart ==   8 || tpart ==  14 || tpart ==  22 || tpart ==  28 || tpart ==  34 || 
+				tpart ==  42 || tpart ==  49 || tpart ==  55 || tpart ==  63 || tpart ==  69 || tpart ==  75 ||
+			 	tpart ==  83 || tpart ==  89 || tpart ==  95 || tpart == 103 || tpart == 109 || tpart == 115 ||
+				tpart == 123 || tpart == 129 || tpart == 135 || tpart == 143 || tpart == 149 || tpart == 155 || 
+				tpart == 164 || tpart == 169 || tpart == 175){
+			colorSet(colorTable);
+			gamePart("sudoku_outer_vertical_border_small");
+		}
+		//SUDOKU OUTER VERTICAL BORDER WITH NEXT LINE, PART BY PART
+		else if(tpart ==  20 || tpart ==  40 || tpart ==  61 || tpart ==  81 || tpart == 101 || tpart == 121 || 
+				tpart == 141 || tpart == 161 || tpart == 181){
+			colorSet(colorTable);
+			gamePart("sudoku_outer_vertical_border_next_line");
+		}
+		//SUDOKU NUMBER
+		else if(tpart ==   3 || tpart ==   5 || tpart ==   7 || tpart ==   9 || tpart ==  11 || tpart ==  13 ||
+				tpart ==  15 || tpart ==  17 || tpart ==  19 || tpart ==  23 || tpart ==  25 || tpart ==  27 ||
+				tpart ==  29 || tpart ==  31 || tpart ==  33 || tpart ==  35 || tpart ==  37 || tpart ==  39 ||
+				tpart ==  43 || tpart ==  45 || tpart ==  47 || tpart ==  50 || tpart ==  52 || tpart ==  54 ||
+				tpart ==  56 || tpart ==  58 || tpart ==  60 || tpart ==  64 || tpart ==  66 || tpart ==  68 ||
+				tpart ==  70 || tpart ==  72 || tpart ==  74 || tpart ==  76 || tpart ==  78 || tpart ==  80 ||
+				tpart ==  84 || tpart ==  86 || tpart ==  88 || tpart ==  90 || tpart ==  92 || tpart ==  94 ||
+				tpart ==  96 || tpart ==  98 || tpart == 100 || tpart == 104 || tpart == 106 || tpart == 108 ||
+				tpart == 110 || tpart == 112 || tpart == 114 || tpart == 116 || tpart == 118 || tpart == 120 ||
+				tpart == 124 || tpart == 126 || tpart == 128 || tpart == 130 || tpart == 132 || tpart == 134 ||
+				tpart == 136 || tpart == 138 || tpart == 140 || tpart == 144 || tpart == 146 || tpart == 148 ||
+				tpart == 150 || tpart == 152 || tpart == 154 || tpart == 156 || tpart == 158 || tpart == 160 ||
+				tpart == 164 || tpart == 166 || tpart == 168 || tpart == 170 || tpart == 172 || tpart == 174 ||
+				tpart == 176 || tpart == 178 || tpart == 180){
+			colorSer(15);
+			
+			//COLOR
+			if(sudokuHighlights[sudokuBuildNumber] == "0"){
+				colorSet(15);
+			}else if(sudokuHighlights[sudokuBuildNumber] == "F"){
+				colorSet(14);
+			}
+			
+			//DISPLAY POINTER OR NOT
+			if(sudokuStatus == "quitted" || sudokuStatus == "finished"){
+				//OUTPUT NUMBER
+				cout << sudokuPuzzle[sudokuBuildNumber];
+			}else{
+				//POINTER
+				if(sudokuBuildNumber == sudokuPointer){
+					colorSet(10);
+					if(sudokuHighlights[sudokuPointer] == "F"){
+						colorSet(11);
+						cout << sudokuPuzzle[sudokuBuildNumber];
+					}else{
+						if(sudokuPuzzle[sudokuBuildNumber] == "1" || sudokuPuzzle[sudokuBuildNumber] == "2" ||
+						   sudokuPuzzle[sudokuBuildNumber] == "2" || sudokuPuzzle[sudokuBuildNumber] == "3" ||
+						   sudokuPuzzle[sudokuBuildNumber] == "4" || sudokuPuzzle[sudokuBuildNumber] == "5 ||
+						   sudokuPuzzle[sudokuBuildNumber] == "6" || sudokuPuzzle[sudokuBuildNumber] == "7" ||
+						   sudokuPuzzle[sudokuBuildNumber] == "8" || sudokuPuzzle[sudokuBuildNumber] == "9"){
+							cout << sudokuPuzzle[sudokuBuildNumber];
+						}else{
+							cout << "x";
+						}
+					}
+				}else{
+					//OUTPUT  NUMBER
+					cout << sudokuPuzzle[sudokuBuildNumber];
+				}
+			}
+			//ADD
+			sudokuBuildNumber++;
+		}
+		//SUDOKU INNER VERTICAL BORDER, PART BY PART
+		
+	}
+}
+
 
 
 
