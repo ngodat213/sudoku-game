@@ -127,6 +127,56 @@ void playSudoku(){
 	main();
 }
 
+char gameLevel(){
+	char choice;
+	
+	//DISPLAY 
+	do{
+		system("cls");
+		colorSet(4); // DARK RED
+		colorSet(15);// WHITE
+			cout << "SUDOKU";
+		colorSet(4); // DARK RED
+			gamePart("line_small_right");
+		colorSet(13);
+			cout << setw(29) << right << "SELECT A DIFFICULTY" << endl;
+		colorSet(4); // DARK RED
+			gamePart("seperator");
+		colorSet(15);// WHITE
+			cout << "[1] ";
+		colorSet(10);
+			cout << "EASY" << endl;
+		colorSet(15);// WHITE
+			cout << "[2] ";
+		colorSet(14);
+			cout << "MEDIUM" << endl;
+		colorSet(15);// WHITE
+			cout << "[3] ";
+		colorSet(12);
+			cout << "HARD" << end;
+		colorSet(4); // DARK RED
+			gamePart("seperator");
+		colorSet(15);// WHITE
+			cout << "[4] ";
+		colorSet(11);
+			cout << "BACK" << endl;
+		colorSet(4);
+			gamePart("seperator");
+		colorSet(7);// LIGHT GRAY
+			cout << "(Press the munber of your choice!)";
+		colorSet(15)// WHITE
+			
+			// GET USER CHOICE
+			char select = getch();
+			if(!(select < '1' || select > '4')){
+				choice = select;
+				break;
+			}		
+	}while(true);
+	
+	return choice;
+}
+
 
 
 
