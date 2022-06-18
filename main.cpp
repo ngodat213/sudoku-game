@@ -89,3 +89,15 @@ int main(){
 	return 0;
 }
 
+// MENU CENTRAL
+void gotoMenu(char choice){
+	if(choice == '1'){
+		playSudoku(); // GO TO PLAY MENU
+	}
+	else if(choice == '2'){
+		helpSudoku("main"); // GO TO INSTRUCTION MENU
+	}
+	else if(choice == '3'){
+		exitMenu(); // GO TO EXIT MENU
+	}
+}
