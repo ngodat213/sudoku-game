@@ -323,6 +323,29 @@ void setPuzzle(int level){
 	
 }
 
+void makePuzzle(string target, string puzzle){
+	//Variable
+	char cpuzzle[puzzle.length()];
+	int i;
+	int pointer = 0;
+	//Loop function
+	for(i = 0; i < sizeof(cpuzzle); ++i){
+		cpuzzle[i] = puzzle[i];
+		if(!(cpuzzle[i] == '.' || cpuzzle[i] == '|')){
+			string sodokuNumber(1, cpuzzle[i]);
+			if(target == "puzzle_layout"){
+				sudokuPuzzle[pointer] = sodokuNumber;
+			}else if(target == "highlight_layout"){
+				sudokuHighlights[pointer] = sodokuNumber;
+			}else if(target == "solution_layout"){
+				sudokuSolution[i] = sodokuNumber;
+			}
+			pointer++;
+		}
+	}
+	cout << endl << endl;
+}
+
 
 
 
