@@ -1,8 +1,9 @@
 #include<iostream>
 #include<iomanip>
-#include<windown.h>
+#include<windows.h>
 #include<conio.h>
 #include<cmath>
+using namespace std;
 
 // VOID FUNCTIONS
 void playSudoku();
@@ -153,7 +154,7 @@ char gameLevel(){
 		colorSet(15);// WHITE
 			cout << "[3] ";
 		colorSet(12);
-			cout << "HARD" << end;
+			cout << "HARD" << endl;
 		colorSet(4); // DARK RED
 			gamePart("seperator");
 		colorSet(15);// WHITE
@@ -164,7 +165,7 @@ char gameLevel(){
 			gamePart("seperator");
 		colorSet(7);// LIGHT GRAY
 			cout << "(Press the munber of your choice!)";
-		colorSet(15)// WHITE
+		colorSet(15);// WHITE
 			
 			// GET USER CHOICE
 			char select = getch();
@@ -175,6 +176,22 @@ char gameLevel(){
 	}while(true);
 	
 	return choice;
+}
+
+void showProgressHardMode(double final_progress){
+	if(final_progress >= 69){
+		if(final_progress >= 84){
+			if(final_progress >= 94){
+				cout << "Just a little bit!";
+			}else{
+				cout << "Almost there!";
+			}
+		}else{
+			cout << "Half-way there!";
+		}
+	}else{
+		cout << "Unfinshed";
+	}
 }
 
 
