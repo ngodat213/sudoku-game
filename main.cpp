@@ -101,3 +101,44 @@ void gotoMenu(char choice){
 		exitMenu(); // GO TO EXIT MENU
 	}
 }
+
+// PLAY
+void playSudoku(){
+	// GAME LEVEL
+	char setLevel = gameLevel();
+	
+	// CONDITION LEVEL
+	if(setLevel == '4'){
+		// GO TO MAIN
+		main();
+	}else {
+		// GAME START
+		level = (int)setLevel - 84; //Initialize level
+		setPuzzle(level);			//SET LEVEL
+		sudokuStatus = "playing";	//SET STATUS
+		sudokuPointer = 0;			//RESET POINTER
+		checkGame();				//For progress
+		mainGame();					//Enter the game
+	}
+	
+	// PAUSE
+	getch();
+	// GO TO MAIN MENU
+	main();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
