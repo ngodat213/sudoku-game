@@ -430,7 +430,7 @@ void mainGame(){
 				tpart == 150 || tpart == 152 || tpart == 154 || tpart == 156 || tpart == 158 || tpart == 160 ||
 				tpart == 164 || tpart == 166 || tpart == 168 || tpart == 170 || tpart == 172 || tpart == 174 ||
 				tpart == 176 || tpart == 178 || tpart == 180){
-			colorSer(15);
+			colorSet(15);
 			
 			//COLOR
 			if(sudokuHighlights[sudokuBuildNumber] == "0"){
@@ -453,7 +453,7 @@ void mainGame(){
 					}else{
 						if(sudokuPuzzle[sudokuBuildNumber] == "1" || sudokuPuzzle[sudokuBuildNumber] == "2" ||
 						   sudokuPuzzle[sudokuBuildNumber] == "2" || sudokuPuzzle[sudokuBuildNumber] == "3" ||
-						   sudokuPuzzle[sudokuBuildNumber] == "4" || sudokuPuzzle[sudokuBuildNumber] == "5 ||
+						   sudokuPuzzle[sudokuBuildNumber] == "4" || sudokuPuzzle[sudokuBuildNumber] == "5" ||
 						   sudokuPuzzle[sudokuBuildNumber] == "6" || sudokuPuzzle[sudokuBuildNumber] == "7" ||
 						   sudokuPuzzle[sudokuBuildNumber] == "8" || sudokuPuzzle[sudokuBuildNumber] == "9"){
 							cout << sudokuPuzzle[sudokuBuildNumber];
@@ -470,9 +470,180 @@ void mainGame(){
 			sudokuBuildNumber++;
 		}
 		//SUDOKU INNER VERTICAL BORDER, PART BY PART
-		
+		else if(tpart ==   4 || tpart ==   6 || tpart ==  10 || tpart ==  12 || tpart ==  16 || tpart ==  18 ||
+				tpart ==  24 || tpart ==  26 || tpart ==  30 || tpart ==  32 || tpart ==  36 || tpart ==  38 ||
+				tpart ==  44 || tpart ==  46 || tpart ==  51 || tpart ==  53 || tpart ==  57 || tpart ==  59 ||
+				tpart ==  65 || tpart ==  67 || tpart ==  71 || tpart ==  73 || tpart ==  77 || tpart ==  79 ||
+				tpart ==  85 || tpart ==  87 || tpart ==  91 || tpart ==  93 || tpart ==  97 || tpart ==  99 ||
+				tpart == 105 || tpart == 107 || tpart == 111 || tpart == 113 || tpart == 117 || tpart == 119 ||
+				tpart == 125 || tpart == 127 || tpart == 131 || tpart == 133 || tpart == 137 || tpart == 139 ||
+				tpart == 145 || tpart == 147 || tpart == 151 || tpart == 153 || tpart == 157 || tpart == 159 ||
+				tpart == 165 || tpart == 167 || tpart == 171 || tpart == 173 || tpart == 177 || tpart == 179){
+			colorSet(colorTable);
+			gamePart("sudoku_inner_vertical_border_small");
+		}
+		//SUDOKU INNER BORDER
+		else if(tpart ==  21 || tpart ==  41 || tpart ==  82 || tpart == 102 || tpart == 142 || tpart == 162){
+			colorSet(colorTable);
+			gamePart("sudoku_inner_border");
+		}
 	}
+	cout << endl;
+	// -- TABLE GENERATOR -- //
+	
+	// -- DETAILS -- //
+	
+		// SET PROGRESS
+		final_progress = round(((double(correct)/81.0)*100.0));
+		
+	// CHECK PLAYER CONDITION
+	if(sudokuStatus == "playing"){
+		colorSet(11);
+		cout << "Progress: ";
+		colorSet(15);
+		
+		//SWITCH CASE
+		switch(level){
+			case 1:
+				cout << correct << "/81";
+				break;
+			case 2:
+				cout << final_progress << "%";
+				break;
+			default: 
+				showProgressHardMode(final_progress);
+		}
+		
+		cout << endl;
+		colorSet(14);
+			cout << "Press";
+		colorSet(12);
+			cout << "Esc";
+		colorSet(15);
+			cout << " or ";
+		colorSet(12);
+			cout << "[P] ";
+		colorSet(14);
+			cout << "to pause the game";
+	}else if(sudokuStatus == "quitted"){
+		colorSet(14);
+			cout << " Sorry you did not finish" << endl
+				 << " the sudoku puzzle." << endl;
+		colorSet(13);
+			cout << " Better luck next time!" << endl;
+		colorSet(15);
+			cout << " By the way, thats the solution." << endl;
+		colorSet(7);
+			cout << " [Press any key to exit the game]" << endl;
+		getch(); //pause
+		main(); //go to main menu
+	}else if(sudokuStatus == "finished"){
+		colorSet(10);
+			cout << " Congratulations you solve!" << endl
+				 << " the sudoku puzzle." << endl;
+		colorSet(13);
+			cout << "Your sudoku skills are" << endl
+				 << "quite impressive" << endl << endl;
+		colorSet(7);
+			cout << "[Press any key to exit the game]" << endl;
+		getch(); //pause
+		main(); //go to main menu
+	}else{
+		cout << "Pointer: " << sudokuPointer << endl;
+		cout << "Highligth: " << sudokuHighlights << endl;
+	}
+	// -- DETAILS -- //
+	
+	// -- KEYBOARD FUNCTION -- //
+	while(true){
+		int keyPress; // key code
+		colorSet(15);
+			keyPress = 0; //reset
+			keyPress = getch(); //get number
+			
+			if(keyPress == 0 || keyPress == 224){ //if arrow keys and delete key pressed
+				keyPress = 256 + getch(); //convert key code
+				if(keyPress == 328){ //UP
+					upKey();
+					break;
+				}else if(keyPress == 336){ //DOWN
+					downKey();
+					break;
+				}else if(keyPress == 331){ //LEFT
+					leftKey();
+					break;
+				}else if(keyPress == 333){ //RIGHT
+					rightKey();
+					break;
+				}else if(keyPress == 339){ //DELETE (Del)
+					setNumberKey("clear");
+					break;
+				}
+			}else{ //if other key pressed
+				//MOVEMENT KEYS
+				if(keyPress == 119 || keyPress == 87){ //Up (W)
+					upKey();
+					break;
+				}else if(keyPress == 115 || keyPress == 83){ //DOWN
+					downKey();
+					break;
+				}else if(keyPress == 97  || keyPress == 65){ //LEFT
+					leftKey();
+					break;
+				}else if(keyPress == 100 || keyPress == 68){ //RIGHT
+					rightKey();
+					break;
+				}
+				// NUMBER KEYS
+				if(keyPress == 49){ //One (1)
+					setNumberKey("1");
+					break;
+				}else if(keyPress == 50){ // Two (2)
+					setNumberKey("2");
+					break;
+				}else if(keyPress == 51){ // Three (3)
+					setNumberKey("3");
+					break;
+				}else if(keyPress == 52){ // Four (4)
+					setNumberKey("4");
+					break;
+				}else if(keyPress == 53){ // Five (5)
+					setNumberKey("5");
+					break;
+				}else if(keyPress == 54){ // Six (6)
+					setNumberKey("6");
+					break;
+				}else if(keyPress == 55){ // Seven (7)
+					setNumberKey("7");
+					break;
+				}else if(keyPress == 56){ // Eight (8)
+					setNumberKey("8");
+					break;
+				}else if(keyPress == 57){ // Nine (9)
+					setNumberKey("9");
+					break;
+				}else 
+				// DELETE KEY
+				if(keyPress == 8){
+					setNumberKey("clear");
+					break;
+				}else 
+				// PAUSE KEY
+				if(keyPress == 27 || keyPress == 112 || keyPress == 80){ //Escape (Esc) or (P) //
+					pauseGame();
+					break;
+				}else{
+					continue;
+				}
+			}
+	}
+	// -- KEYBOARD FUNCTIONS -- //
+	
+	// -- CHECKER -- //
+	checkGame();
+	// -- CHECKER -- //
 }
+
 
 
 
