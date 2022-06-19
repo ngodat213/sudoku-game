@@ -818,11 +818,82 @@ void pauseGame(){
 				break;
 			}else
 				break;
-			}
+		}
 			
 	}while(true);
 }
 
+void helpSudoku(string located){
+	system("cls");
+	colorSet(4);
+		gamePart("line_small_left");
+	colorSet(15);
+		cout << "SUDOKU";
+	colorSet(4);
+		gamePart("line_small_right");
+	colorSet(13);
+		cout << setw(24) << right << "INSTRUCTIONS" << endl;
+	colorSet(4);
+		gamePart("seperator");
+	colorSet(10);
+		cout << " How to play: " << endl;
+	colorSet(15);
+		cout << "Coming soon!!!";
+	colorSet(4);
+		gamePart("seperator");
+	colorSet(7);
+		cout << "[Press any key to go back]";
+	colorSet(15);
+	
+	//PAUSE
+	getch();
+	//GO TO MAIN MENU
+	if(located == "main"){
+		main();
+	}	
+}
+
+void exitMenu(){
+	//DISPLAY
+	do{
+		system("cls");
+		colorSet(4);
+			gamePart("line_small_left");
+		colorSet(15);
+			cout << "SUDOKU";
+		colorSet(4);
+			gamePart("line_small_right");
+		colorSet(13);
+			cout << setw(24) << right << "DO YOU WANT TO EXIT" << endl;
+		colorSet(4);
+			gamePart("seperator");
+		colorSet(15);
+			cout << "[1] ";
+		colorSet(12);
+			cout << "YES" << endl;
+		colorSet(15);
+			cout << "[2] ";
+		colorSet(10);
+			cout << "NO" << endl;
+		colorSet(15);
+			cout << "[3] ";
+		colorSet(4);
+			gamePart("seperator");
+		colorSet(7);
+			cout << "[Press the number of your choice!]";
+		colorSet(15);
+		
+		//GET USER CHOICE
+		if(!(select < '1' || select > '2')){
+			cout << endl;
+			if(select == '1'){
+				exit(0);
+			}else{
+				main();
+			}
+		}
+	}while(true);
+}
 
 
 
