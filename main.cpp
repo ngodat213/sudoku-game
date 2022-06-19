@@ -45,10 +45,10 @@ int main(){
 	//HIDE CURSOR
 	hideCursor(true);
 	SetConsoleTitle(("Sudoku"));
-	
+
 	//VARIABLE
 	int choice;
-	
+
 	//DISPLAY
 	while(true){
 		system("cls");
@@ -75,16 +75,16 @@ int main(){
 		colorSet(7); // LIGHT GRAY
 			cout << "(Press the number of your choice!)";
 		colorSet(15); // WHITE
-			
+
 			// GET USER CHOICE
 			char select = getch();
 			if(!(select < '1' || select > '3')){
 				choice = select;
 				break;
 			}
-			
+
 	}
-	
+
 	// GOTO MENU OF USER CHOICE
 	gotoMenu(choice);
 	return 0;
@@ -107,7 +107,7 @@ void gotoMenu(char choice){
 void playSudoku(){
 	// GAME LEVEL
 	char setLevel = gameLevel();
-	
+
 	// CONDITION LEVEL
 	if(setLevel == '4'){
 		// GO TO MAIN
@@ -121,7 +121,7 @@ void playSudoku(){
 		checkGame();				//For progress
 		mainGame();					//Enter the game
 	}
-	
+
 	// PAUSE
 	getch();
 	// GO TO MAIN MENU
@@ -130,8 +130,8 @@ void playSudoku(){
 
 char gameLevel(){
 	char choice;
-	
-	//DISPLAY 
+
+	//DISPLAY
 	do{
 		system("cls");
 		colorSet(4); // DARK RED
@@ -166,15 +166,15 @@ char gameLevel(){
 		colorSet(7);// LIGHT GRAY
 			cout << "(Press the munber of your choice!)";
 		colorSet(15);// WHITE
-			
+
 			// GET USER CHOICE
 			char select = getch();
 			if(!(select < '1' || select > '4')){
 				choice = select;
 				break;
-			}		
+			}
 	}while(true);
-	
+
 	return choice;
 }
 
@@ -198,19 +198,19 @@ void setPuzzle(int level){
 	// Varible
 	string dot = ".";
 	string puzzle, highlight, solution;
-	
+
 	// Condition
-	
+
 		//EASY
 		if(level == 1){
 			puzzle = (" .7.8|3.1. | . . " + dot
 					+ " .4. | .2.6|5. . " + dot
 					+ "6. . |9.4.7|8. .1" + dot
-					
+
 					+ "2. . | . . | .4. " + dot
 					+ "5. . |7. .1| . .2" + dot
 					+ " .1. | . . | . .3" + dot
-					
+
 					+ "4. .5| . . | . .9" + dot
 					+ " . .1|4.5. | .2. " + dot
 					+ " . . | .9.2|4.7. " + dot
@@ -218,11 +218,11 @@ void setPuzzle(int level){
 		 highlight = ("0.F.F|F.F.0|0.0.0" + dot
 		 			+ "0.F.0|0.F.F|F.0.0" + dot
 		 			+ "F.0.0|F.F.F|F.0.F" + dot
-		 			
+
 		 			+ "F.0.0|0.0.0|0.F.0" + dot
 		 			+ "F.0.0|F.0.F|0.0.F" + dot
 		 			+ "0.F.0|0.0.0|0.0.F" + dot
-		 			
+
 		 			+ "F.0.F|0.0.0|0.0.F" + dot
 		 			+ "0.0.F|F.F.0|0.F.0" + dot
 		 			+ "0.0.0|0.F.F|F.F.0" + dot
@@ -230,11 +230,11 @@ void setPuzzle(int level){
 		  solution = ("9.7.8|3.1.5|2.6.4" + dot
 		  			+ "1.4.3|8.2.6|5.9.7" + dot
 		  			+ "6.5.2|9.4.7|8.3.1" + dot
-		  			
+
 		  			+ "2.3.7|5.8.9|1.4.6" + dot
 		  			+ "5.6.4|7.3.1|9.8.2" + dot
 		  			+ "8.1.9|2.6.4|7.5.3" + dot
-		  			
+
 		  			+ "4.2.5|6.7.8|3.1.9" + dot
 		  			+ "7.9.1|4.5.3|6.2.8" + dot
 		  			+ "3.8.6|1.9.2|4.7.5" + dot
@@ -244,11 +244,11 @@ void setPuzzle(int level){
 			puzzle = (" .7.8|3.1. | . . " + dot
 					+ " .4. | .2.6|5. . " + dot
 					+ "6. . |9.4.7|8. .1" + dot
-					
+
 					+ "2. . | . . | .4. " + dot
 					+ "5. . |7. .1| . .2" + dot
 					+ " .1. | . . | . .3" + dot
-					
+
 					+ "4. .5| . . | . .9" + dot
 					+ " . .1|4.5. | .2. " + dot
 					+ " . . | .9.2|4.7. " + dot
@@ -256,11 +256,11 @@ void setPuzzle(int level){
 		 highlight = ("0.F.F|F.F.0|0.0.0" + dot
 		 			+ "0.F.0|0.F.F|F.0.0" + dot
 		 			+ "F.0.0|F.F.F|F.0.F" + dot
-		 			
+
 		 			+ "F.0.0|0.0.0|0.F.0" + dot
 		 			+ "F.0.0|F.0.F|0.0.F" + dot
 		 			+ "0.F.0|0.0.0|0.0.F" + dot
-		 			
+
 		 			+ "F.0.F|0.0.0|0.0.F" + dot
 		 			+ "0.0.F|F.F.0|0.F.0" + dot
 		 			+ "0.0.0|0.F.F|F.F.0" + dot
@@ -268,11 +268,11 @@ void setPuzzle(int level){
 		  solution = ("9.7.8|3.1.5|2.6.4" + dot
 		  			+ "1.4.3|8.2.6|5.9.7" + dot
 		  			+ "6.5.2|9.4.7|8.3.1" + dot
-		  			
+
 		  			+ "2.3.7|5.8.9|1.4.6" + dot
 		  			+ "5.6.4|7.3.1|9.8.2" + dot
 		  			+ "8.1.9|2.6.4|7.5.3" + dot
-		  			
+
 		  			+ "4.2.5|6.7.8|3.1.9" + dot
 		  			+ "7.9.1|4.5.3|6.2.8" + dot
 		  			+ "3.8.6|1.9.2|4.7.5" + dot
@@ -282,11 +282,11 @@ void setPuzzle(int level){
 			puzzle = (" .7.8|3.1. | . . " + dot
 					+ " .4. | .2.6|5. . " + dot
 					+ "6. . |9.4.7|8. .1" + dot
-					
+
 					+ "2. . | . . | .4. " + dot
 					+ "5. . |7. .1| . .2" + dot
 					+ " .1. | . . | . .3" + dot
-					
+
 					+ "4. .5| . . | . .9" + dot
 					+ " . .1|4.5. | .2. " + dot
 					+ " . . | .9.2|4.7. " + dot
@@ -294,11 +294,11 @@ void setPuzzle(int level){
 		 highlight = ("0.F.F|F.F.0|0.0.0" + dot
 		 			+ "0.F.0|0.F.F|F.0.0" + dot
 		 			+ "F.0.0|F.F.F|F.0.F" + dot
-		 			
+
 		 			+ "F.0.0|0.0.0|0.F.0" + dot
 		 			+ "F.0.0|F.0.F|0.0.F" + dot
 		 			+ "0.F.0|0.0.0|0.0.F" + dot
-		 			
+
 		 			+ "F.0.F|0.0.0|0.0.F" + dot
 		 			+ "0.0.F|F.F.0|0.F.0" + dot
 		 			+ "0.0.0|0.F.F|F.F.0" + dot
@@ -306,11 +306,11 @@ void setPuzzle(int level){
 		  solution = ("9.7.8|3.1.5|2.6.4" + dot
 		  			+ "1.4.3|8.2.6|5.9.7" + dot
 		  			+ "6.5.2|9.4.7|8.3.1" + dot
-		  			
+
 		  			+ "2.3.7|5.8.9|1.4.6" + dot
 		  			+ "5.6.4|7.3.1|9.8.2" + dot
 		  			+ "8.1.9|2.6.4|7.5.3" + dot
-		  			
+
 		  			+ "4.2.5|6.7.8|3.1.9" + dot
 		  			+ "7.9.1|4.5.3|6.2.8" + dot
 		  			+ "3.8.6|1.9.2|4.7.5" + dot
@@ -320,7 +320,7 @@ void setPuzzle(int level){
 	makePuzzle("puzzle_layout", puzzle);
 	makePuzzle("highlight_layout", highlight);
 	makePuzzle("solution_layout", solution);
-	
+
 }
 
 void makePuzzle(string target, string puzzle){
@@ -375,16 +375,16 @@ void mainGame(){
 		gamePart("seperator");
 		cout << endl;
 	// -- HEADER -- //
-	
+
 	// -- TABLE GENERATOR -- //
-	
+
 	///////////////////////////
 	// SET COLOR TABLE //
 	int colorTable = 5;
 	/////////////////////
-	
+
 	//IF PLAYER QUITS
-	
+
 		//SET SUDOKY PUZZLE SIZE
 		sudokuPuzzleSize = (sizeof(sudokuPuzzle) / sizeof(sudokuPuzzle[0]));
 		//FETH SOLUTION
@@ -393,7 +393,7 @@ void mainGame(){
 				sudokuPuzzle[checker] = sudokuSolution[checker];
 			}
 		}
-	
+
 	//BUILD SUDOKU TABLE
 	sudokuBuildNumber = 0;
 	for(int tpart = 1; tpart <= 182; ++tpart){
@@ -401,16 +401,16 @@ void mainGame(){
 			colorSet(colorTable);
 			gamePart("sudoku_outer_border");
 		}
-		else if(tpart ==   2 || tpart ==   8 || tpart ==  14 || tpart ==  22 || tpart ==  28 || tpart ==  34 || 
+		else if(tpart ==   2 || tpart ==   8 || tpart ==  14 || tpart ==  22 || tpart ==  28 || tpart ==  34 ||
 				tpart ==  42 || tpart ==  49 || tpart ==  55 || tpart ==  63 || tpart ==  69 || tpart ==  75 ||
 			 	tpart ==  83 || tpart ==  89 || tpart ==  95 || tpart == 103 || tpart == 109 || tpart == 115 ||
-				tpart == 123 || tpart == 129 || tpart == 135 || tpart == 143 || tpart == 149 || tpart == 155 || 
+				tpart == 123 || tpart == 129 || tpart == 135 || tpart == 143 || tpart == 149 || tpart == 155 ||
 				tpart == 164 || tpart == 169 || tpart == 175){
 			colorSet(colorTable);
 			gamePart("sudoku_outer_vertical_border_small");
 		}
 		//SUDOKU OUTER VERTICAL BORDER WITH NEXT LINE, PART BY PART
-		else if(tpart ==  20 || tpart ==  40 || tpart ==  61 || tpart ==  81 || tpart == 101 || tpart == 121 || 
+		else if(tpart ==  20 || tpart ==  40 || tpart ==  61 || tpart ==  81 || tpart == 101 || tpart == 121 ||
 				tpart == 141 || tpart == 161 || tpart == 181){
 			colorSet(colorTable);
 			gamePart("sudoku_outer_vertical_border_next_line");
@@ -431,14 +431,14 @@ void mainGame(){
 				tpart == 164 || tpart == 166 || tpart == 168 || tpart == 170 || tpart == 172 || tpart == 174 ||
 				tpart == 176 || tpart == 178 || tpart == 180){
 			colorSet(15);
-			
+
 			//COLOR
 			if(sudokuHighlights[sudokuBuildNumber] == "0"){
 				colorSet(15);
 			}else if(sudokuHighlights[sudokuBuildNumber] == "F"){
 				colorSet(14);
 			}
-			
+
 			//DISPLAY POINTER OR NOT
 			if(sudokuStatus == "quitted" || sudokuStatus == "finished"){
 				//OUTPUT NUMBER
@@ -490,18 +490,18 @@ void mainGame(){
 	}
 	cout << endl;
 	// -- TABLE GENERATOR -- //
-	
+
 	// -- DETAILS -- //
-	
+
 		// SET PROGRESS
 		final_progress = round(((double(correct)/81.0)*100.0));
-		
+
 	// CHECK PLAYER CONDITION
 	if(sudokuStatus == "playing"){
 		colorSet(11);
 		cout << "Progress: ";
 		colorSet(15);
-		
+
 		//SWITCH CASE
 		switch(level){
 			case 1:
@@ -510,10 +510,10 @@ void mainGame(){
 			case 2:
 				cout << final_progress << "%";
 				break;
-			default: 
+			default:
 				showProgressHardMode(final_progress);
 		}
-		
+
 		cout << endl;
 		colorSet(14);
 			cout << "Press";
@@ -553,14 +553,14 @@ void mainGame(){
 		cout << "Highligth: " << sudokuHighlights << endl;
 	}
 	// -- DETAILS -- //
-	
+
 	// -- KEYBOARD FUNCTION -- //
 	while(true){
 		int keyPress; // key code
 		colorSet(15);
 			keyPress = 0; //reset
 			keyPress = getch(); //get number
-			
+
 			if(keyPress == 0 || keyPress == 224){ //if arrow keys and delete key pressed
 				keyPress = 256 + getch(); //convert key code
 				if(keyPress == 328){ //UP
@@ -622,12 +622,12 @@ void mainGame(){
 				}else if(keyPress == 57){ // Nine (9)
 					setNumberKey("9");
 					break;
-				}else 
+				}else
 				// DELETE KEY
 				if(keyPress == 8){
 					setNumberKey("clear");
 					break;
-				}else 
+				}else
 				// PAUSE KEY
 				if(keyPress == 27 || keyPress == 112 || keyPress == 80){ //Escape (Esc) or (P) //
 					pauseGame();
@@ -638,17 +638,17 @@ void mainGame(){
 			}
 	}
 	// -- KEYBOARD FUNCTIONS -- //
-	
+
 	// -- CHECKER -- //
 	checkGame();
 	// -- CHECKER -- //
 }
 
 void checkGame(){
-	
+
 	//SET SUDOKU PUZZLE SIZE
 	sudokuPuzzleSize = (sizeof(sudokuPuzzle) / sizeof(sudokuPuzzle[0]));
-	
+
 	correct = 0; // reset total of correct numbers in the grid
 	for(int sudokuPointing = 0; sudokuPointing < sudokuPuzzleSize; sudokuPointing++){
 		if(sudokuPuzzle[sudokuPointing] == sudokuSolution[sudokuPointing]){
@@ -657,9 +657,9 @@ void checkGame(){
 	}
 	// GAME FINISHED
 	if(correct == sudokuPuzzleSize){
-		sudokuStatus("finished");
+		sudokuStatus = "finished";
 	}
-	
+
 	// RESUME TO THE GAME
 	mainGame();
 }
@@ -686,7 +686,7 @@ void upKey(){
 		sudokuPointer = 79;
 	}else if(sudokuPointer <= -1){
 		sudokuPointer = 80;
-	}	
+	}
 }
 
 void downKey(){
@@ -710,7 +710,7 @@ void downKey(){
 		sudokuPointer = 7;
 	}else if(sudokuPointer >= 89){
 		sudokuPointer = 8;
-	}	
+	}
 }
 
 void leftKey(){
@@ -734,7 +734,7 @@ void leftKey(){
 		sudokuPointer = 17;
 	}else if(sudokuPointer == -1){
 		sudokuPointer = 8;
-	}	
+	}
 }
 
 void rightKey(){
@@ -758,11 +758,11 @@ void rightKey(){
 		sudokuPointer = 9;
 	}else if(sudokuPointer == 9){
 		sudokuPointer = 0;
-	}	
+	}
 }
 
 //SET NUMBER KEY OR CLEAR THE NUMBER IN THE GRID
-void setNumber(string value){
+void setNumberKey(string value){
 	if(!(value == "clear")){
 		if(sudokuHighlights[sudokuPointer] == "0"){
 			sudokuPuzzle[sudokuPointer] = value;
@@ -806,7 +806,7 @@ void pauseGame(){
 		colorSet(7);
 			cout << "[Press the number of your choice!]";
 		colorSet(15);
-		
+
 		//GET USER CHOICE
 		char select = getch();
 		if(!(select < '1' || select > '3')){
@@ -819,7 +819,7 @@ void pauseGame(){
 			}else
 				break;
 		}
-			
+
 	}while(true);
 }
 
@@ -838,19 +838,19 @@ void helpSudoku(string located){
 	colorSet(10);
 		cout << " How to play: " << endl;
 	colorSet(15);
-		cout << "Coming soon!!!";
+		cout << "Coming soon!!!" << endl;
 	colorSet(4);
 		gamePart("seperator");
 	colorSet(7);
 		cout << "[Press any key to go back]";
 	colorSet(15);
-	
+
 	//PAUSE
 	getch();
 	//GO TO MAIN MENU
 	if(located == "main"){
 		main();
-	}	
+	}
 }
 
 void exitMenu(){
@@ -882,8 +882,9 @@ void exitMenu(){
 		colorSet(7);
 			cout << "[Press the number of your choice!]";
 		colorSet(15);
-		
+
 		//GET USER CHOICE
+		char select = getch();
 		if(!(select < '1' || select > '2')){
 			cout << endl;
 			if(select == '1'){
@@ -895,16 +896,40 @@ void exitMenu(){
 	}while(true);
 }
 
+//COLOR SET
+void colorSet(int init){
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), init);
+}
+//GAME PARTS
+void gamePart(string part){
+	if(part == "line_small_left"){
+		cout << "=============== ";
+	}else if(part == "line_small_right"){
+		cout << " ===============" << endl;
+	}else if(part == "seperator"){
+		cout << "======================================" << endl;
+	}else if(part == "sudoku_outer_border"){
+		cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << endl;
+	}else if(part == "sudoku_outer_vertical_border_small"){
+		cout << " $ ";
+	}else if(part == "sudoku_outer_vertical_border_next_line"){
+		cout << " $" << endl;
+	}else if(part == "sudoku_inner_vertical_border_small"){
+		cout << " | ";
+	}else if(part == "sudoku_inner_vertical_border_next_line"){
+		cout << " |" << endl;
+	}else if(part == "sudoku_inner_border"){
+		cout << " $---*---*---$---*---*---$---*---*---$" << endl;
+	}else{
+		cout << "";
+	}
+}
 
-
-
-
-
-
-
-
-
-
-
-
+void hideCursor(bool condition){
+	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cursorInfo;
+	GetConsoleCursorInfo(out, &cursorInfo);
+	cursorInfo.bVisible = (!(condition));
+	SetConsoleCursorInfo(out, &cursorInfo);
+}
 
