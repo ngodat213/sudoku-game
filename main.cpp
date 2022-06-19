@@ -774,6 +774,56 @@ void setNumber(string value){
 	}
 }
 
+// PAUSE GAME
+void pauseGame(){
+	//DISPLAY
+	do{
+		system("cls");
+		colorSet(4);
+			gamePart("line_small_left");
+		colorSet(15);
+			cout << "SUDOKU";
+		colorSet(4);
+			gamePart("line_small_right");
+		colorSet(13);
+			cout << setw(24) << right << "GAME PAUSED" << endl;
+		colorSet(4);
+			gamePart("seperator");
+		colorSet(15);
+			cout << "[1] ";
+		colorSet(14);
+			cout << "RESUME" << endl;
+		colorSet(15);
+			cout << "[2] ";
+		colorSet(10);
+			cout << "INSTRUCTION" << endl;
+		colorSet(15);
+			cout << "[3] ";
+		colorSet(12);
+			cout << "QUIT" << endl;
+		colorSet(4);
+			gamePart("seperator");
+		colorSet(7);
+			cout << "[Press the number of your choice!]";
+		colorSet(15);
+		
+		//GET USER CHOICE
+		char select = getch();
+		if(!(select < '1' || select > '3')){
+			cout << endl;
+			if(select == '2'){
+				helpSudoku("in-game");
+			}else if(select == '3'){
+				sudokuStatus = "quitted";
+				break;
+			}else
+				break;
+			}
+			
+	}while(true);
+}
+
+
 
 
 
