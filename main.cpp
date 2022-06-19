@@ -644,8 +644,122 @@ void mainGame(){
 	// -- CHECKER -- //
 }
 
+void checkGame(){
+	
+	//SET SUDOKU PUZZLE SIZE
+	sudokuPuzzleSize = (sizeof(sudokuPuzzle) / sizeof(sudokuPuzzle[0]));
+	
+	correct = 0; // reset total of correct numbers in the grid
+	for(int sudokuPointing = 0; sudokuPointing < sudokuPuzzleSize; sudokuPointing++){
+		if(sudokuPuzzle[sudokuPointing] == sudokuSolution[sudokuPointing]){
+			correct++;
+		}
+	}
+	// GAME FINISHED
+	if(correct == sudokuPuzzleSize){
+		sudokuStatus("finished");
+	}
+	
+	// RESUME TO THE GAME
+	mainGame();
+}
 
+//GAME CONTROL FUNCTIONS
+void upKey(){
+	sudokuPointer = sudokuPointer - 9;
+	//TOP BARRIER
+	if(sudokuPointer == -9){
+		sudokuPointer = 72;
+	}else if(sudokuPointer == -8){
+		sudokuPointer = 73;
+	}else if(sudokuPointer == -7){
+		sudokuPointer = 74;
+	}else if(sudokuPointer == -6){
+		sudokuPointer = 75;
+	}else if(sudokuPointer == -5){
+		sudokuPointer = 76;
+	}else if(sudokuPointer == -4){
+		sudokuPointer = 77;
+	}else if(sudokuPointer == -3){
+		sudokuPointer = 78;
+	}else if(sudokuPointer == -2){
+		sudokuPointer = 79;
+	}else if(sudokuPointer <= -1){
+		sudokuPointer = 80;
+	}	
+}
 
+void downKey(){
+	sudokuPointer = sudokuPointer + 9;
+	//BOTTOM BARRIER
+	if(sudokuPointer == 81){
+		sudokuPointer = 0;
+	}else if(sudokuPointer == 82){
+		sudokuPointer = 1;
+	}else if(sudokuPointer == 83){
+		sudokuPointer = 2;
+	}else if(sudokuPointer == 84){
+		sudokuPointer = 3;
+	}else if(sudokuPointer == 85){
+		sudokuPointer = 4;
+	}else if(sudokuPointer == 86){
+		sudokuPointer = 5;
+	}else if(sudokuPointer == 87){
+		sudokuPointer = 6;
+	}else if(sudokuPointer == 88){
+		sudokuPointer = 7;
+	}else if(sudokuPointer >= 89){
+		sudokuPointer = 8;
+	}	
+}
+
+void leftKey(){
+	sudokuPointer = sudokuPointer -1;
+	//LEFT BARRIER
+	if(sudokuPointer == 62){
+		sudokuPointer = 71;
+	}else if(sudokuPointer == 71){
+		sudokuPointer = 80;
+	}else if(sudokuPointer == 53){
+		sudokuPointer = 62;
+	}else if(sudokuPointer == 44){
+		sudokuPointer = 53;
+	}else if(sudokuPointer == 35){
+		sudokuPointer = 44;
+	}else if(sudokuPointer == 26){
+		sudokuPointer = 35;
+	}else if(sudokuPointer == 17){
+		sudokuPointer = 26;
+	}else if(sudokuPointer == 8){
+		sudokuPointer = 17;
+	}else if(sudokuPointer == -1){
+		sudokuPointer = 8;
+	}	
+}
+
+void rightKey(){
+	sudokuPointer = sudokuPointer -1;
+	//RIGHT BARRIER
+	if(sudokuPointer == 81){
+		sudokuPointer = 72;
+	}else if(sudokuPointer == 72){
+		sudokuPointer = 63;
+	}else if(sudokuPointer == 63){
+		sudokuPointer = 54;
+	}else if(sudokuPointer == 54){
+		sudokuPointer = 45;
+	}else if(sudokuPointer == 45){
+		sudokuPointer = 36;
+	}else if(sudokuPointer == 36){
+		sudokuPointer = 27;
+	}else if(sudokuPointer == 27){
+		sudokuPointer = 18;
+	}else if(sudokuPointer == 18){
+		sudokuPointer = 9;
+	}else if(sudokuPointer == 9){
+		sudokuPointer = 0;
+	}	
+}
 
 
 
