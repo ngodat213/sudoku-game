@@ -761,6 +761,19 @@ void rightKey(){
 	}	
 }
 
+//SET NUMBER KEY OR CLEAR THE NUMBER IN THE GRID
+void setNumber(string value){
+	if(!(value == "clear")){
+		if(sudokuHighlights[sudokuPointer] == "0"){
+			sudokuPuzzle[sudokuPointer] = value;
+		}
+	}else {
+		if(sudokuHighlights[sudokuPointer] == "0"){
+			sudokuPuzzle[sudokuPointer] = " ";
+		}
+	}
+}
+
 
 
 
