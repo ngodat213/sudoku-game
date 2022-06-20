@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<iomanip>
 #include<windows.h>
@@ -114,7 +115,7 @@ void playSudoku(){
 		main();
 	}else {
 		// GAME START
-		level = (int)setLevel - 84; //Initialize level
+		level = (int)setLevel - 48; //Initialize level
 		setPuzzle(level);			//SET LEVEL
 		sudokuStatus = "playing";	//SET STATUS
 		sudokuPointer = 0;			//RESET POINTER
@@ -135,6 +136,7 @@ char gameLevel(){
 	do{
 		system("cls");
 		colorSet(4); // DARK RED
+			gamePart("line_small_left");
 		colorSet(15);// WHITE
 			cout << "SUDOKU";
 		colorSet(4); // DARK RED
@@ -213,8 +215,7 @@ void setPuzzle(int level){
 
 					+ "4. .5| . . | . .9" + dot
 					+ " . .1|4.5. | .2. " + dot
-					+ " . . | .9.2|4.7. " + dot
-					);
+					+ " . . | .9.2|4.7. " );
 		 highlight = ("0.F.F|F.F.0|0.0.0" + dot
 		 			+ "0.F.0|0.F.F|F.0.0" + dot
 		 			+ "F.0.0|F.F.F|F.0.F" + dot
@@ -225,8 +226,7 @@ void setPuzzle(int level){
 
 		 			+ "F.0.F|0.0.0|0.0.F" + dot
 		 			+ "0.0.F|F.F.0|0.F.0" + dot
-		 			+ "0.0.0|0.F.F|F.F.0" + dot
-					);
+		 			+ "0.0.0|0.F.F|F.F.0" );
 		  solution = ("9.7.8|3.1.5|2.6.4" + dot
 		  			+ "1.4.3|8.2.6|5.9.7" + dot
 		  			+ "6.5.2|9.4.7|8.3.1" + dot
@@ -237,8 +237,7 @@ void setPuzzle(int level){
 
 		  			+ "4.2.5|6.7.8|3.1.9" + dot
 		  			+ "7.9.1|4.5.3|6.2.8" + dot
-		  			+ "3.8.6|1.9.2|4.7.5" + dot
- 		  			 );
+		  			+ "3.8.6|1.9.2|4.7.5" );
  		// MEDIUM
 		}else if(level == 2){
 			puzzle = (" .7.8|3.1. | . . " + dot
@@ -251,8 +250,7 @@ void setPuzzle(int level){
 
 					+ "4. .5| . . | . .9" + dot
 					+ " . .1|4.5. | .2. " + dot
-					+ " . . | .9.2|4.7. " + dot
-					);
+					+ " . . | .9.2|4.7. " );
 		 highlight = ("0.F.F|F.F.0|0.0.0" + dot
 		 			+ "0.F.0|0.F.F|F.0.0" + dot
 		 			+ "F.0.0|F.F.F|F.0.F" + dot
@@ -263,8 +261,7 @@ void setPuzzle(int level){
 
 		 			+ "F.0.F|0.0.0|0.0.F" + dot
 		 			+ "0.0.F|F.F.0|0.F.0" + dot
-		 			+ "0.0.0|0.F.F|F.F.0" + dot
-					);
+		 			+ "0.0.0|0.F.F|F.F.0" );
 		  solution = ("9.7.8|3.1.5|2.6.4" + dot
 		  			+ "1.4.3|8.2.6|5.9.7" + dot
 		  			+ "6.5.2|9.4.7|8.3.1" + dot
@@ -275,8 +272,7 @@ void setPuzzle(int level){
 
 		  			+ "4.2.5|6.7.8|3.1.9" + dot
 		  			+ "7.9.1|4.5.3|6.2.8" + dot
-		  			+ "3.8.6|1.9.2|4.7.5" + dot
- 		  			 );
+		  			+ "3.8.6|1.9.2|4.7.5" );
  		// HARD
 		}else {
 			puzzle = (" .7.8|3.1. | . . " + dot
@@ -289,8 +285,7 @@ void setPuzzle(int level){
 
 					+ "4. .5| . . | . .9" + dot
 					+ " . .1|4.5. | .2. " + dot
-					+ " . . | .9.2|4.7. " + dot
-					);
+					+ " . . | .9.2|4.7. " );
 		 highlight = ("0.F.F|F.F.0|0.0.0" + dot
 		 			+ "0.F.0|0.F.F|F.0.0" + dot
 		 			+ "F.0.0|F.F.F|F.0.F" + dot
@@ -301,8 +296,7 @@ void setPuzzle(int level){
 
 		 			+ "F.0.F|0.0.0|0.0.F" + dot
 		 			+ "0.0.F|F.F.0|0.F.0" + dot
-		 			+ "0.0.0|0.F.F|F.F.0" + dot
-					);
+		 			+ "0.0.0|0.F.F|F.F.0" );
 		  solution = ("9.7.8|3.1.5|2.6.4" + dot
 		  			+ "1.4.3|8.2.6|5.9.7" + dot
 		  			+ "6.5.2|9.4.7|8.3.1" + dot
@@ -313,8 +307,7 @@ void setPuzzle(int level){
 
 		  			+ "4.2.5|6.7.8|3.1.9" + dot
 		  			+ "7.9.1|4.5.3|6.2.8" + dot
-		  			+ "3.8.6|1.9.2|4.7.5" + dot
- 		  			 );
+		  			+ "3.8.6|1.9.2|4.7.5" );
 		}
 	// CREATE THE PUZZLE
 	makePuzzle("puzzle_layout", puzzle);
@@ -329,7 +322,7 @@ void makePuzzle(string target, string puzzle){
 	int i;
 	int pointer = 0;
 	//Loop function
-	for(i = 0; i < sizeof(cpuzzle); ++i){
+	for(i = 0; i < sizeof(cpuzzle); i++){
 		cpuzzle[i] = puzzle[i];
 		if(!(cpuzzle[i] == '.' || cpuzzle[i] == '|')){
 			string sodokuNumber(1, cpuzzle[i]);
@@ -338,7 +331,7 @@ void makePuzzle(string target, string puzzle){
 			}else if(target == "highlight_layout"){
 				sudokuHighlights[pointer] = sodokuNumber;
 			}else if(target == "solution_layout"){
-				sudokuSolution[i] = sodokuNumber;
+				sudokuSolution[pointer] = sodokuNumber;
 			}
 			pointer++;
 		}
@@ -397,7 +390,7 @@ void mainGame(){
 	//BUILD SUDOKU TABLE
 	sudokuBuildNumber = 0;
 	for(int tpart = 1; tpart <= 182; ++tpart){
-		if(tpart == 1 || tpart == 62 || tpart == 1 || tpart == 182){
+		if(tpart == 1 || tpart == 62 || tpart == 122 || tpart == 182){
 			colorSet(colorTable);
 			gamePart("sudoku_outer_border");
 		}
@@ -405,7 +398,7 @@ void mainGame(){
 				tpart ==  42 || tpart ==  49 || tpart ==  55 || tpart ==  63 || tpart ==  69 || tpart ==  75 ||
 			 	tpart ==  83 || tpart ==  89 || tpart ==  95 || tpart == 103 || tpart == 109 || tpart == 115 ||
 				tpart == 123 || tpart == 129 || tpart == 135 || tpart == 143 || tpart == 149 || tpart == 155 ||
-				tpart == 164 || tpart == 169 || tpart == 175){
+				tpart == 163 || tpart == 169 || tpart == 175){
 			colorSet(colorTable);
 			gamePart("sudoku_outer_vertical_border_small");
 		}
@@ -479,7 +472,7 @@ void mainGame(){
 				tpart == 125 || tpart == 127 || tpart == 131 || tpart == 133 || tpart == 137 || tpart == 139 ||
 				tpart == 145 || tpart == 147 || tpart == 151 || tpart == 153 || tpart == 157 || tpart == 159 ||
 				tpart == 165 || tpart == 167 || tpart == 171 || tpart == 173 || tpart == 177 || tpart == 179){
-			colorSet(colorTable);
+			colorSet(12);
 			gamePart("sudoku_inner_vertical_border_small");
 		}
 		//SUDOKU INNER BORDER
@@ -516,7 +509,7 @@ void mainGame(){
 
 		cout << endl;
 		colorSet(14);
-			cout << "Press";
+			cout << "Press ";
 		colorSet(12);
 			cout << "Esc";
 		colorSet(15);
@@ -738,7 +731,7 @@ void leftKey(){
 }
 
 void rightKey(){
-	sudokuPointer = sudokuPointer -1;
+	sudokuPointer = sudokuPointer + 1;
 	//RIGHT BARRIER
 	if(sudokuPointer == 81){
 		sudokuPointer = 72;
@@ -909,7 +902,7 @@ void gamePart(string part){
 	}else if(part == "seperator"){
 		cout << "======================================" << endl;
 	}else if(part == "sudoku_outer_border"){
-		cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << endl;
+		cout << " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << endl;
 	}else if(part == "sudoku_outer_vertical_border_small"){
 		cout << " $ ";
 	}else if(part == "sudoku_outer_vertical_border_next_line"){
